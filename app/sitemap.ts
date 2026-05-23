@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteUrl, cars, blogPosts } from "@/lib/data";
+import { siteUrl, cars, blogPosts, brands, getBrandSlug } from "@/lib/data";
 
 const siteLastModified = "2026-05-23";
 
@@ -29,6 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [car.image],
   }));
 
+  const brandPages = brands.map((brand) => ({
+    url: `${siteUrl}/brands/${getBrandSlug(brand.name)}`,
+    lastModified: siteLastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.78,
+    images: [brand.image],
+  }));
+
   const blogPages = blogPosts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
     lastModified: post.publishedAt,
@@ -37,5 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [post.image],
   }));
 
-  return [...pages, ...carPages, ...blogPages];
+  return [...pages, ...brandPages, ...carPages, ...blogPages];
 }

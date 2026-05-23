@@ -21,10 +21,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  applicationName: "DreamRides Dubai",
   title: "DreamRides Dubai | Luxury Car Rental",
   description:
     "Book premium luxury cars in Dubai with VIP delivery, exotic supercars, and bespoke rental experiences.",
   metadataBase: new URL(siteUrl),
+  keywords: [
+    "luxury car rental Dubai",
+    "rent supercar Dubai",
+    "exotic car rental Dubai",
+    "Ferrari rental Dubai",
+    "Lamborghini rental Dubai",
+    "Rolls Royce rental Dubai",
+    "VIP car rental Dubai",
+  ],
+  authors: [{ name: "DreamRides Dubai" }],
+  creator: "DreamRides Dubai",
+  publisher: "DreamRides Dubai",
+  category: "Luxury car rental",
   alternates: {
     canonical: "/",
   },

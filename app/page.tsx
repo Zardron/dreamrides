@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { cars, brands, brandsList, blogPosts, faqs } from "@/lib/data";
+import { cars, brands, brandsList, blogPosts, faqs, getBrandSlug } from "@/lib/data";
 import CarCard from "@/app/components/CarCard";
 import BlogCard from "@/app/components/BlogCard";
 import HeroCarousel from "@/app/components/HeroCarousel";
@@ -320,7 +320,7 @@ export default function Home() {
               {brands.map((brand) => (
                 <Link
                   key={`${track}-${brand.name}`}
-                  href={`/cars?brand=${encodeURIComponent(brand.name)}`}
+                  href={`/brands/${getBrandSlug(brand.name)}`}
                   className="flex h-24 min-w-48 flex-col items-center justify-center rounded-md border border-white/10 bg-white/[0.03] px-6 transition hover:border-[#d7b46a]/60 hover:bg-white/[0.06]"
                   aria-label={`View ${brand.name} models`}
                 >

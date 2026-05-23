@@ -84,6 +84,76 @@ export function getFAQSchema(faqs: { question: string; answer: string }[]) {
   };
 }
 
+export function getCarItemListSchema(
+  items: {
+    name: string;
+    brand: string;
+    image: string;
+    price: number;
+    url: string;
+  }[],
+  name = "DreamRides Dubai luxury car rental fleet",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((car, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: car.url,
+      item: {
+        "@type": "Product",
+        name: car.name,
+        brand: {
+          "@type": "Brand",
+          name: car.brand,
+        },
+        image: car.image,
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "AED",
+          price: car.price,
+          availability: "https://schema.org/InStock",
+          url: car.url,
+        },
+      },
+    })),
+  };
+}
+
+export function getBlogPostingSchema(post: {
+  title: string;
+  excerpt: string;
+  image: string;
+  publishedAt: string;
+  author: string;
+  slug: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "DreamRides Dubai",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo.svg`,
+      },
+    },
+    mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+  };
+}
+
 export function getCarSchema(car: {
   name: string;
   brand: string;

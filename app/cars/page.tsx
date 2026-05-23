@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import CompareLimitToast from "@/app/components/CompareLimitToast";
-import { brands, brandsList, cars } from "@/lib/data";
+import { brands, brandsList, cars, siteUrl } from "@/lib/data";
+import { getCarItemListSchema } from "@/lib/structuredData";
 import type { Car } from "@/lib/data";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -124,7 +125,10 @@ function CarShowroomCard({ car }: { car: Car }) {
   );
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const params = await searchParams;
+  const hasFilters = Object.values(params).some((value) => Boolean(asString(value)));
+
   return {
     title: "Luxury Car Rentals in Dubai | Fleet",
     description:
@@ -132,6 +136,15 @@ export function generateMetadata(): Metadata {
     alternates: {
       canonical: "/cars",
     },
+    robots: hasFilters
+      ? {
+          index: false,
+          follow: true,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
     openGraph: {
       title: "Luxury Car Rentals in Dubai | DreamRides Fleet",
       description:
@@ -161,6 +174,22 @@ export default async function CarsPage({ searchParams }: { searchParams: SearchP
 
   return (
     <div className="bg-[#0f0f0f] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            getCarItemListSchema(
+              filteredCars.map((car) => ({
+                name: car.name,
+                brand: car.brand,
+                image: car.image,
+                price: car.price,
+                url: `${siteUrl}/cars/${car.slug}`,
+              })),
+            ),
+          ),
+        }}
+      />
       <CompareLimitToast />
       <section className="relative overflow-hidden border-b border-white/10 px-6 py-16 sm:px-8 lg:px-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,_rgba(215,180,106,0.18),_transparent_32%),radial-gradient(circle_at_88%_12%,_rgba(255,255,255,0.08),_transparent_28%)]" />

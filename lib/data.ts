@@ -787,6 +787,26 @@ export const brandsList = [
   "Tesla",
 ];
 
+export function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getBrandSlug(brand: string) {
+  return slugify(brand);
+}
+
+export function getBrandBySlug(slug: string) {
+  return brands.find((brand) => getBrandSlug(brand.name) === slug);
+}
+
+export function getCarsByBrand(brand: string) {
+  return cars.filter((car) => car.brand === brand);
+}
+
 export function getCarBySlug(slug: string) {
   return cars.find((car) => car.slug === slug);
 }

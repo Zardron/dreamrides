@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, blogPosts } from "@/lib/data";
+import { getBlogPostingSchema } from "@/lib/structuredData";
 import type { Metadata } from "next";
 
 type Props = {
@@ -46,6 +47,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="space-y-16 px-6 py-20 sm:px-8 lg:px-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getBlogPostingSchema(post)) }} />
       <section className="mx-auto max-w-6xl">
         <div className="mb-10 text-sm uppercase tracking-[0.28em] text-white/60">
           <Link href="/blog" className="transition hover:text-white">

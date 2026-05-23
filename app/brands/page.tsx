@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { brands } from "@/lib/data";
+import { brands, getBrandSlug } from "@/lib/data";
 
 export function generateMetadata(): Metadata {
   return {
@@ -47,7 +47,7 @@ export default function BrandsPage() {
               </div>
               <h2 className="mt-6 text-2xl font-semibold text-white">{brand.name}</h2>
               <Link
-                href={`/cars?brand=${encodeURIComponent(brand.name)}`}
+                href={`/brands/${getBrandSlug(brand.name)}`}
                 className="mt-6 inline-flex rounded-full border border-white/10 bg-white/5 px-5 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:border-gold-200 hover:text-gold-200"
               >
                 View all model
