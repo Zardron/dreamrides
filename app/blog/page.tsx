@@ -6,6 +6,9 @@ export function generateMetadata(): Metadata {
   return {
     title: "Dubai Luxury Car Rental Blog | DreamRides",
     description: "Insights, routes, and rental tips for Dubai luxury cars, supercars, and VIP travel experiences.",
+    alternates: {
+      canonical: "/blog",
+    },
   };
 }
 

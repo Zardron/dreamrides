@@ -1,30 +1,40 @@
+import type { MetadataRoute } from "next";
 import { siteUrl, cars, blogPosts } from "@/lib/data";
 
-export default function sitemap() {
+const siteLastModified = "2026-05-23";
+
+export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
-    "",
-    "cars",
-    "brands",
-    "blog",
-    "about",
-    "contact",
-    "faq",
-    "admin",
+    { path: "", priority: 1, changeFrequency: "weekly" as const },
+    { path: "cars", priority: 0.95, changeFrequency: "daily" as const },
+    { path: "brands", priority: 0.85, changeFrequency: "weekly" as const },
+    { path: "blog", priority: 0.75, changeFrequency: "weekly" as const },
+    { path: "about", priority: 0.65, changeFrequency: "monthly" as const },
+    { path: "contact", priority: 0.7, changeFrequency: "monthly" as const },
+    { path: "faq", priority: 0.65, changeFrequency: "monthly" as const },
   ];
 
   const pages = routes.map((route) => ({
-    url: `${siteUrl}/${route}`,
-    lastModified: new Date().toISOString(),
+    url: route.path ? `${siteUrl}/${route.path}` : siteUrl,
+    lastModified: siteLastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
 
   const carPages = cars.map((car) => ({
     url: `${siteUrl}/cars/${car.slug}`,
-    lastModified: new Date().toISOString(),
+    lastModified: siteLastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+    images: [car.image],
   }));
 
   const blogPages = blogPosts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
     lastModified: post.publishedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+    images: [post.image],
   }));
 
   return [...pages, ...carPages, ...blogPages];

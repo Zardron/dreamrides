@@ -129,6 +129,16 @@ export function generateMetadata(): Metadata {
     title: "Luxury Car Rentals in Dubai | Fleet",
     description:
       "Browse our premium Dubai fleet of Lamborghini, Ferrari, Rolls Royce, Porsche and luxury rentals with VIP delivery.",
+    alternates: {
+      canonical: "/cars",
+    },
+    openGraph: {
+      title: "Luxury Car Rentals in Dubai | DreamRides Fleet",
+      description:
+        "Browse luxury car rentals in Dubai with premium supercars, SUVs, sedans, and VIP delivery from DreamRides.",
+      url: "/cars",
+      type: "website",
+    },
   };
 }
 

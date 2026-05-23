@@ -23,10 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${car.name} | Luxury Car Rental Dubai`,
     description: car.description,
+    alternates: {
+      canonical: `/cars/${car.slug}`,
+    },
     openGraph: {
       title: `${car.name} | DreamRides Dubai`,
       description: car.description,
       images: [car.image],
+      url: `/cars/${car.slug}`,
       type: "website",
     },
   };

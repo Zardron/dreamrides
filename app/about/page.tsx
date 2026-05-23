@@ -6,6 +6,9 @@ export function generateMetadata(): Metadata {
   return {
     title: "About DreamRides Dubai | Premium Car Rental",
     description: "Learn about DreamRides Dubai's luxury car rental service, VIP support, and bespoke experiences for travelers.",
+    alternates: {
+      canonical: "/about",
+    },
   };
 }
 

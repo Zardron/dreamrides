@@ -1,8 +1,25 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { cars, brands, brandsList, blogPosts, faqs } from "@/lib/data";
 import CarCard from "@/app/components/CarCard";
 import BlogCard from "@/app/components/BlogCard";
 import HeroCarousel from "@/app/components/HeroCarousel";
+
+export const metadata: Metadata = {
+  title: "Luxury Car Rental in Dubai | DreamRides",
+  description:
+    "Rent luxury cars in Dubai with DreamRides. Book Ferrari, Lamborghini, Rolls Royce, Porsche, and VIP SUVs with concierge delivery.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Luxury Car Rental in Dubai | DreamRides",
+    description:
+      "Rent luxury cars in Dubai with VIP delivery, exotic supercars, clear rates, and WhatsApp concierge booking.",
+    url: "/",
+    type: "website",
+  },
+};
 
 const rentalTerms = [
   {

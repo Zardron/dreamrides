@@ -6,6 +6,14 @@ export function generateMetadata(): Metadata {
   return {
     title: "Admin Dashboard | DreamRides Dubai",
     description: "Manage cars, blogs, SEO fields, and bookings with the DreamRides admin dashboard.",
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
+    },
   };
 }
 

@@ -6,6 +6,9 @@ export function generateMetadata(): Metadata {
   return {
     title: "FAQ | DreamRides Dubai",
     description: "Frequently asked questions about luxury car rentals, booking terms, and VIP delivery in Dubai.",
+    alternates: {
+      canonical: "/faq",
+    },
   };
 }
 

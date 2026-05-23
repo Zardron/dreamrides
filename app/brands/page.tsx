@@ -6,6 +6,9 @@ export function generateMetadata(): Metadata {
   return {
     title: "Luxury Car Brands in Dubai | DreamRides",
     description: "Explore our curated luxury car brands for premium rentals in Dubai, including Lamborghini, Ferrari, Rolls Royce, Porsche and more.",
+    alternates: {
+      canonical: "/brands",
+    },
   };
 }
 

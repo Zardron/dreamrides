@@ -4,6 +4,9 @@ export function generateMetadata(): Metadata {
   return {
     title: "Contact DreamRides Dubai | Book a Luxury Car",
     description: "Contact DreamRides Dubai for luxury car rental inquiries, airport delivery bookings, and VIP chauffeur services.",
+    alternates: {
+      canonical: "/contact",
+    },
   };
 }
 

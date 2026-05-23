@@ -8,9 +8,49 @@ export function getWebsiteSchema() {
       "Premium luxury car rental service in Dubai for exotic supercars, VIP sedans, and high-performance rentals.",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://dreamrides-dubai.com/cars?query={search_term_string}",
+      target: "https://dreamrides-dubai.com/cars?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+export function getAutoRentalSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "AutoRental"],
+    "@id": "https://dreamrides-dubai.com/#business",
+    name: "DreamRides Dubai",
+    url: "https://dreamrides-dubai.com",
+    logo: "https://dreamrides-dubai.com/logo.svg",
+    image: "https://dreamrides-dubai.com/logo.svg",
+    description:
+      "Luxury car rental service in Dubai offering exotic supercars, executive sedans, premium SUVs, VIP delivery, and concierge booking support.",
+    telephone: "+971551234567",
+    email: "info@dreamrides-dubai.com",
+    priceRange: "AED 620-2999",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Dubai",
+      },
+      {
+        "@type": "Country",
+        name: "United Arab Emirates",
+      },
+    ],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "00:00",
+        closes: "23:59",
+      },
+    ],
   };
 }
 

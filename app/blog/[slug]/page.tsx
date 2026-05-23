@@ -20,11 +20,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | DreamRides Dubai Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       images: [post.image],
+      url: `/blog/${post.slug}`,
       type: "article",
+      publishedTime: post.publishedAt,
+      authors: [post.author],
     },
   };
 }

@@ -9,6 +9,17 @@ export function generateMetadata(): Metadata {
   return {
     title: "Compare Luxury Cars | DreamRides Dubai",
     description: "Compare selected Dubai luxury cars side-by-side to choose the perfect rental.",
+    alternates: {
+      canonical: "/cars/compare",
+    },
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
+    },
   };
 }
 
