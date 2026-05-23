@@ -5,6 +5,7 @@ import "./globals.css";
 import NavBar from "@/app/components/NavBar";
 import Footer from "@/app/components/Footer";
 import WhatsAppCTA from "@/app/components/WhatsAppCTA";
+import { siteUrl } from "@/lib/data";
 import { getAutoRentalSchema, getWebsiteSchema } from "@/lib/structuredData";
 
 const googleAnalyticsId = "G-5T4XMODQRH";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   title: "DreamRides Dubai | Luxury Car Rental",
   description:
     "Book premium luxury cars in Dubai with VIP delivery, exotic supercars, and bespoke rental experiences.",
-  metadataBase: new URL("https://dreamrides-dubai.com"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },

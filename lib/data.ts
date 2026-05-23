@@ -39,7 +39,7 @@ export type FAQ = {
   answer: string;
 };
 
-export const siteUrl = "https://dreamrides-dubai.com";
+export const siteUrl = "https://dreamrides-dubai.vercel.app";
 
 const carPhoto = {
   huracan: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lamborghini_Huracan_Evo%2C_GIMS_2019%2C_Le_Grand-Saconnex_%28GIMS1010%29.jpg",
